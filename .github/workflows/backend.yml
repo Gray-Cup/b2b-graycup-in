@@ -33,5 +33,5 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: |
-            ghcr.io/gray-cup/backend:latest
-            ghcr.io/gray-cup/backend:${{ github.sha }}
+            ghcr.io/gray-cup/backend-b2b:latest
+            ghcr.io/gray-cup/backend-b2b:${{ github.sha }}
