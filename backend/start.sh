@@ -1,6 +1,7 @@
 #!/bin/sh
+set -e
 
-yarn
+yarn install
 yarn build
-npx medusa user -e admin@medusa-test.com -p supersecret || true
-yarn start
+
+medusa start --host 0.0.0.0 --port 9000
