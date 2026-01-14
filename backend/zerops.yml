@@ -2,6 +2,13 @@ zerops:
   - setup: admin
     build:
       base: nodejs@20
+      envVariables:
+        STORE_CORS: "http://localhost:8000,https://b2b.graycup.in"
+        ADMIN_CORS: "https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
+        AUTH_CORS: "https://b2b.graycup.in,https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
+        REDIS_URL: ${redis_connectionString}
+        DB_NAME: ${db_dbName}
+        DATABASE_URL: postgresql://${db_user}:${db_password}@${db_hostname}:${db_portTls}/${db_dbName}
       buildCommands:
         - cd backend && yarn install
         - cd backend && yarn build
@@ -9,12 +16,12 @@ zerops:
     run:
       base: nodejs@20
       envVariables:
-        STORE_CORS: "http://localhost:8000,https://docs.medusajs.com"
-        ADMIN_CORS: "http://localhost:7000,http://localhost:7001,https://docs.medusajs.com"
-        AUTH_CORS: "http://localhost:7000,http://localhost:7001,https://docs.medusajs.com"
-        REDIS_URL: redis://${redis_hostname}:${redis_port}
+        STORE_CORS: "http://localhost:8000,https://b2b.graycup.in"
+        ADMIN_CORS: "https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
+        AUTH_CORS: "https://b2b.graycup.in,https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
+        REDIS_URL: ${redis_connectionString}
         DB_NAME: ${db_dbName}
-        DATABASE_URL: postgresql://${db_user}:${db_password}@${db_hostname}:${db_portTls}
+        DATABASE_URL: postgresql://${db_user}:${db_password}@${db_hostname}:${db_portTls}/${db_dbName}
       start: yarn start
       ports:
         - port: 9000
