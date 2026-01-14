@@ -6,7 +6,7 @@ zerops:
         STORE_CORS: "http://localhost:8000,https://b2b.graycup.in"
         ADMIN_CORS: "https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
         AUTH_CORS: "https://b2b.graycup.in,https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
-        REDIS_URL: ${redis_connectionString}
+        REDIS_URL: redis://${redis_hostname}:6379
         DB_NAME: ${db_dbName}
         DATABASE_URL: postgresql://${db_user}:${db_password}@${db_hostname}:${db_portTls}/${db_dbName}
       buildCommands:
@@ -19,10 +19,10 @@ zerops:
         STORE_CORS: "http://localhost:8000,https://b2b.graycup.in"
         ADMIN_CORS: "https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
         AUTH_CORS: "https://b2b.graycup.in,https://b2b-admin.graycup.in,http://localhost:7000,http://localhost:7001"
-        REDIS_URL: ${redis_connectionString}
+        REDIS_URL: redis://${redis_hostname}:6379
         DB_NAME: ${db_dbName}
         DATABASE_URL: postgresql://${db_user}:${db_password}@${db_hostname}:${db_portTls}/${db_dbName}
-      start: yarn start
+      start: zsc noop
       ports:
         - port: 9000
           httpSupport: true
