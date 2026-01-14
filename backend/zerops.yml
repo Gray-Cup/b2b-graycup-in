@@ -3,8 +3,8 @@ zerops:
     build:
       base: nodejs@20
       buildCommands:
-        - yarn install
-        - yarn build
+        - cd backend && yarn install
+        - cd backend && yarn build
       deployFiles: backend/~
     run:
       base: nodejs@20
@@ -15,7 +15,7 @@ zerops:
         REDIS_URL: ${redis_connectionString}
         DB_NAME: ${postgres_dbName}
         DATABASE_URL: ${postgres_connectionString}
-      startCommand: yarn start
+      start: yarn start
       ports:
         - port: 9000
           httpSupport: true
