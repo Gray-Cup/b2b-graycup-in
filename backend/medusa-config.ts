@@ -15,27 +15,6 @@ module.exports = defineConfig({
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
-    databaseDriverOptions: {
-      ssl: false,
-      sslmode: "disable",
-    },
-  },
-  admin: {
-    vite: (config) => {
-      return {
-        ...config,
-        server: {
-          ...config.server,
-          host: "0.0.0.0",
-          allowedHosts: ["localhost", ".localhost", "127.0.0.1"],
-          hmr: {
-            ...config.server?.hmr,
-            port: 5173,
-            clientPort: 5173,
-          },
-        },
-      };
-    },
   },
   modules: {
     [COMPANY_MODULE]: {
