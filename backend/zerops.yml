@@ -1,12 +1,11 @@
 zerops:
-  - setup: medusa-backend
+  - setup: admin
     build:
       base: nodejs@20
       buildCommands:
-        - npm install
-        - npm run build
-      deployFiles:
-        - .
+        - yarn install
+        - yarn build
+      deployFiles: backend/~
     run:
       base: nodejs@20
       envVariables:
@@ -16,7 +15,7 @@ zerops:
         REDIS_URL: ${redis_connectionString}
         DB_NAME: ${postgres_dbName}
         DATABASE_URL: ${postgres_connectionString}
-      startCommand: npm run start
+      startCommand: yarn start
       ports:
         - port: 9000
           httpSupport: true
