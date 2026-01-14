@@ -12,9 +12,9 @@ zerops:
         STORE_CORS: "http://localhost:8000,https://docs.medusajs.com"
         ADMIN_CORS: "http://localhost:7000,http://localhost:7001,https://docs.medusajs.com"
         AUTH_CORS: "http://localhost:7000,http://localhost:7001,https://docs.medusajs.com"
-        REDIS_URL: ${redis_connectionString}
-        DB_NAME: ${postgres_dbName}
-        DATABASE_URL: ${postgres_connectionString}
+        REDIS_URL: redis://${redis_hostname}:${redis_port}
+        DB_NAME: ${db_dbName}
+        DATABASE_URL: postgresql://${db_user}:${db_password}@${db_hostname}:${db_portTls}
       start: yarn start
       ports:
         - port: 9000
